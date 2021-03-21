@@ -1,0 +1,8 @@
+export const SET_STATE_CLIENTE = 'SET_STATE_CLIENTE';
+export const GET_CLIENTE = 'GET_CLIENTE';
+export const SET_CLIENTE = 'SET_CLIENTE';
+export const FILTER_CLIENTE = 'FILTER_CLIENTE';
+export const UPDATE_CLIENTE = 'UPDATE_CLIENTE';
+export const DELETE_CLIENTE = 'DELETE_CLIENTE';
+export const VIEW_CLIENTE = 'VIEW_CLIENTE';
+export const CLEAN_FIELDS = 'CLEAN_FIELDS';

@@ -1,0 +1,39 @@
+.MenuLateral {
+  height: 100%;
+  border-right: 0px;
+  overflow: hidden auto;
+}
+
+.ant-layout-sider {
+  background: #002140 !important;
+  flex: 0 0 250px !important;
+  max-width: 250px !important;
+  min-width: 250px !important;
+  width: 250px !important;
+}
+
+.ant-layout-sider-collapsed {
+  flex: 0 0 80px !important;
+  max-width: 80px !important;
+  min-width: 80px !important;
+  width: 80px !important;
+}
+
+.ant-layout-sider-collapsed {
+  flex: 0 0 80px !important;
+  max-width: 80px !important;
+  min-width: 80px !important;
+  width: 80px !important;
+}
+
+.ant-layout-sider-collapsed .ant-layout-sider-trigger {
+  padding-right: 30px;
+}
+
+.ant-layout-sider-trigger {
+  padding-left: 20px;
+}
+
+.ant-menu-inline-collapsed {
+  padding-right: 13px;
+}
