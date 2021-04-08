@@ -2,14 +2,24 @@ import history from '~/services/history';
 
 const actions = data => {
   switch (data.key) {
-    case 'cadastroCliente':
+    case 'ranking':
       history.push({
-        pathname: '/cadastroCliente/grid',
+        pathname: '/ranking',
       });
       break;
     case 'inscrevaSe':
       history.push({
         pathname: '/inscrevaSe',
+      });
+      break;
+    case 'torneio':
+      history.push({
+        pathname: '/torneio',
+      });
+      break;
+    case 'perfil':
+      history.push({
+        pathname: '/perfil',
       });
       break;
   }

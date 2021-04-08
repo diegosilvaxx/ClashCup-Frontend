@@ -1,12 +1,13 @@
-import "./paypal.css";
-import React, { useState, useRef, useEffect } from "react";
-import clashRoyale from "~/assets/clashroyale.png";
-import clashGold from "~/assets/clashroyale-gold.jpg";
-import paypal from "~/config/paypal";
-import { setPagamento } from '~/store/modules/cadastros/inscrevaSe/inscrevaSe.actions';
+import './paypal.css';
+import React, { useState, useRef, useEffect } from 'react';
+import clashRoyale from '~/assets/clashroyale.png';
+import clashGold from '~/assets/clashroyale-gold.jpg';
+import paypal from '~/config/paypal';
+import { setPagamento, getPagamento } from '~/store/modules/cadastros/inscrevaSe/inscrevaSe.actions';
 import { store } from '~/store';
+import connect from '~/components/connect/connect';
 
-function Paypal() {
+function Paypal(props) {
   const [paid, setPaid] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
@@ -14,21 +15,29 @@ function Paypal() {
 
   const product = {
     price: 10.0,
-    name: "PassportClashCup",
-    description: "Passport Clash Cup",
+    name: 'PassportClashCup',
+    description: `Passport ${props.nameTorneio} - ${props.dataTorneio}`,
     image: clashRoyale,
   };
 
-  useEffect(() => {
-    const script = document.createElement("script");
-    debugger
+  useEffect(async () => {
+    await store.dispatch(getPagamento(props.TorneioId));
+    const script = document.createElement('script');
     const id = paypal.secret;
     script.src = `https://www.paypal.com/sdk/js?currency=BRL&client-id=${id}`;
 
-    script.addEventListener("load", () => setLoaded(true));
+    script.addEventListener('load', () => setLoaded(true));
 
     document.body.appendChild(script);
-  },[]);
+  }, []);
+
+  //componentDidUpdate Conversion to Hooks
+  useEffect(() => {
+    var { Status, TorneioId } = store.getState().inscrevaSe;
+    if (Status === 'Concluido' && props.TorneioId === TorneioId) {
+      setPaid(true);
+    }
+  }, [store.getState().inscrevaSe]);
 
   useEffect(() => {
     if (loaded) {
@@ -42,7 +51,7 @@ function Paypal() {
                     {
                       description: product.description,
                       amount: {
-                        currency_code: "BRL",
+                        currency_code: 'BRL',
                         value: product.price,
                       },
                     },
@@ -51,11 +60,8 @@ function Paypal() {
               },
               onApprove: async (_, actions) => {
                 let result = await actions.order.capture();
-                let resultBack = await store.dispatch(setPagamento({FormaPagamento: "Paypal"}));
-                debugger
-                if(resultBack){
-                  setPaid(true);
-                }
+                await store.dispatch(setPagamento({ FormaPagamento: 'Paypal', TorneioId: props.TorneioId }));
+                setPaid(true);
               },
             })
             .render(paypalRef);
@@ -69,20 +75,20 @@ function Paypal() {
     <div className="App">
       {paid ? (
         <div>
-          <h1>Congrats, you just bought {product.name}!</h1>
-          <img alt={product.description} src={clashGold} />
+          <h1>Parabéns, você comprou o {product.description}!</h1>
+          <img alt={product.description} src={clashGold} style={{ width: 1000, height: 400, marginBottom: 25 }} />
         </div>
       ) : (
         <>
           <h1>
             {product.description} por R${product.price}
           </h1>
-          <img alt={product.description} src={clashRoyale} style={{width: 250,height:150}} />
-          <div ref={(v) => (paypalRef = v)} />
+          <img alt={product.description} src={clashRoyale} style={{ width: 250, height: 150 }} />
+          <div ref={v => (paypalRef = v)} />
         </>
       )}
     </div>
   );
 }
 
-export default Paypal;
+export default connect(Paypal);

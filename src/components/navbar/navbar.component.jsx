@@ -4,6 +4,7 @@ import { LaptopOutlined } from '@ant-design/icons';
 import { Row, Col } from 'antd';
 import { Typography, Space } from 'antd';
 import actionsNavbar from './navbar.actions';
+import trofeu from '~/assets/LogoHorizontal.png';
 import './navbar.css';
 
 const { Text } = Typography;
@@ -21,7 +22,7 @@ class navbar extends Component {
         <Row justify={'space-between'}>
           <Col>
             <Space direction="vertical">
-              <Text className={'tituloSystem'}>Clash Cup</Text>
+              <img alt={'troféu'} src={trofeu} style={{ width: '100%', maxWidth: 120, marginLeft: -30 }} />
             </Space>
           </Col>
           <Col>

@@ -13,23 +13,18 @@ class Grid extends Component {
   }
 
   render() {
-    let { columns, data, title, newRoute } = this.props;
+    let { columns, data, title, style, emptyText } = this.props;
     let result = RemoveReferencia(data);
     return (
       <>
         <Row justify={'space-between'}>
-          <Col className={'mt-4 ml-4 mr-4'}>
+          <Col className={style || 'mt-4 ml-4 mr-4'}>
             <Title level={3}>{title}</Title>
           </Col>
-          <Col className={'mt-4 ml-4 mr-4'}>
-            <Link className="linkButtonNew" to={newRoute}>
-              Novo
-            </Link>
-          </Col>
         </Row>
-        <Row justify={'center'}>
-          <Col md={24} className={'px-4'}>
-            <Table bordered={true} columns={columns} dataSource={result[0]} />
+        <Row>
+          <Col md={24} className={style || 'px-4'}>
+            <Table bordered={true} columns={columns} dataSource={result[0]} locale={{ emptyText: emptyText }} />
           </Col>
         </Row>
       </>

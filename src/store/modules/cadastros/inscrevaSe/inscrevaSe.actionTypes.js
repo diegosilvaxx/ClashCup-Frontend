@@ -1,4 +1,4 @@
 export const GET_PAGAMENTO = 'GET_PAGAMENTO';
 export const SET_PAGAMENTO = 'SET_PAGAMENTO';
-export const SET_STATE = 'SET_STATE';
-
+export const SET_STATE_PAGAMENTO = 'SET_STATE_PAGAMENTO';
+export const GET_PASSPORT = 'GET_PASSPORT';

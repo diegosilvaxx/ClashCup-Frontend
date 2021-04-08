@@ -17,7 +17,7 @@ class SignIn extends Component {
     store.dispatch(signInRequest(usuario, password));
   }
 
-  signUp(){
+  signUp() {
     history.push('/signUp');
   }
 
@@ -30,8 +30,10 @@ class SignIn extends Component {
           <Input name="usuario" type="text" placeholder="Usuário" />
           <Input name="password" type="password" placeholder="Password" />
           <Button type="submit">{loading ? 'Carregando...' : 'Acessar'}</Button>
-          <br/>
-          <button type="button" onClick={this.signUp} class="btn btn-success">Criar Nova Conta</button>
+          <br />
+          <button type="button" onClick={this.signUp} className="btn btn-success">
+            Criar Nova Conta
+          </button>
         </Form>
       </>
     );

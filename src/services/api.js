@@ -7,10 +7,6 @@ const apiMaster = {
   apiSistema: axios.create({
     baseURL: 'https://localhost:44324/api/v1/',
   }),
-
-  apiCEP: axios.create({
-    baseURL: 'https://viacep.com.br/ws/',
-  }),
 };
 
 apiMaster.apiSistema.interceptors.request.use(
@@ -36,6 +32,10 @@ apiMaster.apiSistema.interceptors.response.use(
   async function(error) {
     if (error.response.status == 401) {
       await store.dispatch(authActionCreators.signOutSaga());
+    }
+
+    if (error.response.status == 500 || error.response.status == 404) {
+      return toast.warn('Houve um erro inesperado no sistema,se o problema continuar, comunique o suporte!');
     }
     if (error && error.response && error.response.data) {
       error.response.data.errors.forEach(errorResult => {

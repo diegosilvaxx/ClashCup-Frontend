@@ -35,10 +35,9 @@ class menulateral extends Component {
           className={'MenuLateral'}
           onClick={this.handleClick}
         >
-          <Menu.Item key="1">Torneios</Menu.Item>
-          <Menu.Item key="cadastroCliente">Ranking</Menu.Item>
-          <Menu.Item key="inscrevaSe">Inscreva-se</Menu.Item>
-          <Menu.Item key="7">Perfil</Menu.Item>
+          <Menu.Item key="torneio">Torneios</Menu.Item>
+          <Menu.Item key="ranking">Ranking</Menu.Item>
+          <Menu.Item key="perfil">Perfil</Menu.Item>
         </Menu>
       </Sider>
     );

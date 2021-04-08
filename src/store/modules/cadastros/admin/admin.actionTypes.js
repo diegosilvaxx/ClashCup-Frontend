@@ -1,0 +1,5 @@
+export const SET_STATE_ADMIN = 'SET_STATE_ADMIN';
+export const UPDATE_TORNEIO = 'UPDATE_TORNEIO';
+export const POST_TORNEIO = 'POST_TORNEIO';
+export const CLEAN_FIELDS = 'CLEAN_FIELDS';
+export const DELETE_TORNEIO = 'DELETE_TORNEIO';

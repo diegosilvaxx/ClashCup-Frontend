@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
 import InputMask from 'react-input-mask';
-import { store } from '~/store';
-import * as CepAction from '~/store/modules/cep/cep.actions';
 class Container extends Component {
   constructor(props) {
     super(props);

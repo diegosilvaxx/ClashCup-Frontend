@@ -23,9 +23,8 @@ export function* signIn({ payload }) {
     };
 
     yield put(signInSuccess(payloadLogin));
-    history.push('/inscrevaSe');
+    history.push('/torneio');
   } catch (error) {
-    toast.error('Email ou senha incorreto, verifique seus dados!');
     yield put(signFailure());
   }
 }

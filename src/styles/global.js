@@ -67,11 +67,17 @@ button {
 
 .submitCustom{
   border-radius: 3px !important;
-  width: 120px !important;
   height: 31px !important;
-  margin-left: 15px;
-  background: #002140 !important
-  border-color: #002140 !important
+  background: #002140 !important;
+  border-color: #002140 !important;
+  color: white
+}
+
+.submitCustom2{
+  border-radius: 3px !important;
+  height: 31px !important;
+  background: #9B3D3C !important;
+  border-color: #9B3D3C !important
 }
 
 .returnCustom{

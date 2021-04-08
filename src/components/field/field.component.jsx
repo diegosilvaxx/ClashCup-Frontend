@@ -73,7 +73,7 @@ const makeField = Component => ({
           hasFeedback={hasFeedback && hasError}
           help={hasError && meta.error}
         >
-          <Component disabled={disabled} {...input} {...rest} children={children} />
+          {children}
         </FormItem>
       );
       break;
@@ -110,6 +110,7 @@ class FieldComponent extends Component {
       defaultValue,
       isView,
     } = this.props;
+
     switch (type) {
       case 'AInput':
         return (
@@ -118,6 +119,7 @@ class FieldComponent extends Component {
             label={label}
             rules={rules}
             name={name}
+            children={children}
             nameArray={nameArray}
             component={AInput}
             placeholder={placeholder}
@@ -248,6 +250,7 @@ class FieldComponent extends Component {
           <Field
             onChange={onChange}
             rules={rules}
+            children={children}
             label={label}
             name={name}
             component={AInput}

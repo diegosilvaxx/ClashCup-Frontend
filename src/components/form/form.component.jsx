@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Form } from 'antd';
 import BindingForm from '~/helpers/bindingForm';
 import connect from '~/components/connect/connect';
@@ -8,11 +8,13 @@ const FormComponent = props => {
 
   const [form] = Form.useForm();
 
-  fieldsBinding.forEach(data =>
-    form.setFieldsValue({
-      [data.name[1]]: data.value,
-    })
-  );
+  useEffect(() => {
+    fieldsBinding.forEach(data =>
+      form.setFieldsValue({
+        [data.name[1]]: data.value,
+      })
+    );
+  }, [props.state]);
 
   return (
     <Form

@@ -1,0 +1,6 @@
+export const SET_STATE_RANKING = 'SET_STATE_RANKING';
+export const GET_RANKING = 'GET_RANKING';
+export const SET_RANKING = 'SET_RANKING';
+export const FILTER_RANKING = 'FILTER_RANKING';
+export const CLEAN_FIELDS = 'CLEAN_FIELDS';
+export const UPDATE_RANKING = 'UPDATE_RANKING';

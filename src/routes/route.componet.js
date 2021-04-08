@@ -1,5 +1,8 @@
-import CadastroCliente from './routeSystem/cadastroCliente.route';
+import Ranking from './routeSystem/ranking.route';
 import InscrevaSe from './routeSystem/inscrevaSe.route';
+import Torneio from './routeSystem/torneio.route';
+import Perfil from './routeSystem/perfil.route';
+import Admin from './routeSystem/admin.route';
 
 import SignIn from '../pages/signIn';
 import SignUp from '../pages/signUp';
@@ -21,6 +24,6 @@ const dashboard = [
   },
 ];
 
-const route = [...dashboard, ...CadastroCliente, ...InscrevaSe];
+const route = [...dashboard, ...Ranking, ...InscrevaSe, ...Torneio, ...Perfil, ...Admin];
 
 export default route;

@@ -29,10 +29,9 @@ class RouteWrapper extends Component {
     if (!signed) {
       return (
         <>
-          {/* <Redirect to="/" /> */}
           <Route>
             <Layout>
-              <Component />
+              <Component location={this.props.location} />
             </Layout>
           </Route>
         </>
@@ -40,14 +39,14 @@ class RouteWrapper extends Component {
     }
 
     if (signed && !this.props.isPrivate) {
-      return <Redirect to="/inscrevaSe" />;
+      return <Redirect to="/torneio" />;
     }
 
     return (
       <>
         <LayoutRoute>
           <Layout>
-            <Component isPrivate exact />
+            <Component isPrivate exact location={this.props.location} />
           </Layout>
         </LayoutRoute>
       </>
