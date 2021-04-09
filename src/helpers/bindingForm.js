@@ -6,9 +6,11 @@ const BindingForm = state => {
     let auxKeys;
     for (let index = 0; index < keys.length; index++) {
       if (typeof values[index] === 'object') {
-        [values[index]].map(function(obj2) {
-          auxKeys = Object.keys(obj2);
-        });
+        [values[index]].map(
+          (auxKeys = function(obj2) {
+            return Object.keys(obj2);
+          })
+        );
         let auxValues = Object.values(values[index]);
         let indexAux = index;
         for (let index = 0; index < auxValues.length; index++) {
@@ -21,6 +23,7 @@ const BindingForm = state => {
       }
       result.push({ name: keys[index], value: values[index] });
     }
+    return state;
   });
   return result;
 };
