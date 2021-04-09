@@ -67,7 +67,7 @@ class Container extends Component {
             columns={columns}
             title="Passaportes"
             data={result}
-            style="m-0"
+            className="m-0"
             emptyText="Você ainda não possui nenhum passaporte!"
           />
         </Col>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Popconfirm } from 'antd';
 import autoBind from 'react-autobind';
-import history from 'services/history';
 
 class Container extends Component {
   constructor(props) {

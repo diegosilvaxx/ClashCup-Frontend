@@ -14,7 +14,7 @@ const FormComponent = props => {
         [data.name[1]]: data.value,
       })
     );
-  }, [props.state]);
+  }, [props.state, fieldsBinding, form]);
 
   return (
     <Form

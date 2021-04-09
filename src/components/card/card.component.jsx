@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Input, Row, Col, Button } from 'antd';
+import { Card, Row, Col } from 'antd';
 import autoBind from 'react-autobind';
 import history from 'services/history';
 
@@ -18,9 +18,9 @@ class CardComponent extends Component {
         headStyle={{ color: 'white' }}
         title={title || 'Torneio'}
         extra={
-          <a onClick={() => history.push('/inscrevaSe', state)} style={{ color: 'aqua' }}>
+          <strong onClick={() => history.push('/inscrevaSe', state)} style={{ color: 'aqua', cursor: 'pointer' }}>
             Inscreva-se
-          </a>
+          </strong>
         }
         //extra={<a href={`inscrevaSe/${id}/${title}`}>Inscreva-se</a>}
       >

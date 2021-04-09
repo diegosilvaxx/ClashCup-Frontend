@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import * as actionAuthCreators from '~/store/modules/auth/auth.actions';
 import * as actionClienteCreators from '~/store/modules/cadastros/ranking/ranking.actions';

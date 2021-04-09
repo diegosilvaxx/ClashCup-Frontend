@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
-import { Input, Row, Col, Select, Button } from 'antd';
+import { Input, Row, Col, Select } from 'antd';
 import Field from '~/components/field/field.component';
-import TypeArray from '~/helpers/typeArray';
-
 class dadosConfiguracao extends Component {
   constructor(props) {
     super(props);
     autoBind(this);
   }
   render() {
-    const isView = this.props.prefix == 'V' ? true : false;
+    const isView = this.props.prefix === 'V' ? true : false;
     return (
       <Row>
         <Col sm={24}>

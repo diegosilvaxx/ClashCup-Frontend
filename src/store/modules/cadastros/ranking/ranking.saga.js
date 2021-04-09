@@ -48,7 +48,7 @@ export function* filterRanking(noMessage) {
   debugger;
   if (result) {
     yield put(setState({ FilterRanking: result.data.data }));
-    if (noMessage == true) return;
+    if (noMessage === true) return;
     toast.success('Ranking carregado com sucesso!');
   }
 }

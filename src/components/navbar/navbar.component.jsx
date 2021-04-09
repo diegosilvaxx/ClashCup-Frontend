@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
 import { LaptopOutlined } from '@ant-design/icons';
 import { Row, Col } from 'antd';
-import { Typography, Space } from 'antd';
+import { Space } from 'antd';
 import actionsNavbar from './navbar.actions';
 import trofeu from '~/assets/LogoHorizontal.png';
 import './navbar.css';
 
-const { Text } = Typography;
 const { Header } = Layout;
 const { SubMenu } = Menu;
 

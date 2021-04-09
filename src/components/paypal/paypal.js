@@ -20,16 +20,21 @@ function Paypal(props) {
     image: clashRoyale,
   };
 
-  useEffect(async () => {
-    await store.dispatch(getPagamento(props.TorneioId));
-    const script = document.createElement('script');
-    const id = paypal.secret;
-    script.src = `https://www.paypal.com/sdk/js?currency=BRL&client-id=${id}`;
+  const state = store.getState().inscrevaSe;
 
-    script.addEventListener('load', () => setLoaded(true));
+  useEffect(() => {
+    async function fetchData() {
+      await store.dispatch(getPagamento(props.TorneioId));
+      const script = document.createElement('script');
+      const id = paypal.secret;
+      script.src = `https://www.paypal.com/sdk/js?currency=BRL&client-id=${id}`;
 
-    document.body.appendChild(script);
-  }, []);
+      script.addEventListener('load', () => setLoaded(true));
+
+      document.body.appendChild(script);
+    }
+    fetchData();
+  }, [state, props.TorneioId]);
 
   //componentDidUpdate Conversion to Hooks
   useEffect(() => {
@@ -37,7 +42,7 @@ function Paypal(props) {
     if (Status === 'Concluido' && props.TorneioId === TorneioId) {
       setPaid(true);
     }
-  }, [store.getState().inscrevaSe]);
+  }, [props.TorneioId]);
 
   useEffect(() => {
     if (loaded) {
@@ -59,7 +64,7 @@ function Paypal(props) {
                 });
               },
               onApprove: async (_, actions) => {
-                let result = await actions.order.capture();
+                await actions.order.capture();
                 await store.dispatch(setPagamento({ FormaPagamento: 'Paypal', TorneioId: props.TorneioId }));
                 setPaid(true);
               },

@@ -45,7 +45,7 @@ const ModalComponent = props => {
           columns={columns}
           title="Ranking"
           data={result}
-          style="m-0"
+          className="m-0"
           emptyText="Você ainda não possui nenhum passaporte!"
         />
       </Modal>

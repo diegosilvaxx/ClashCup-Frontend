@@ -5,13 +5,15 @@ async function logout() {
   await store.dispatch(authActionCreators.signOutSaga());
 }
 
-const actions = data => {
+const Actions = data => {
   switch (data.key) {
     case 'perfil':
       break;
     case 'sair':
       logout();
       break;
+    default:
+      break;
   }
 };
-export default actions;
+export default Actions;

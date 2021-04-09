@@ -37,6 +37,8 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.signed = false;
         draft.loading = false;
         break;
+      default:
+        break;
     }
   });
 }

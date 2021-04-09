@@ -47,7 +47,6 @@ const makeField = Component => ({
           />
         </FormItem>
       );
-      break;
     case 'AInputMask':
       return (
         <FormItem
@@ -61,7 +60,6 @@ const makeField = Component => ({
           <Component disabled={disabled} label={label} {...input} {...rest} children={children} />
         </FormItem>
       );
-      break;
 
     default:
       return (
@@ -76,7 +74,6 @@ const makeField = Component => ({
           {children}
         </FormItem>
       );
-      break;
   }
 };
 
@@ -107,7 +104,6 @@ class FieldComponent extends Component {
       rules,
       onChange,
       disabled,
-      defaultValue,
       isView,
     } = this.props;
 
@@ -124,12 +120,10 @@ class FieldComponent extends Component {
             component={AInput}
             placeholder={placeholder}
             hasFeedback={hasFeedback}
-            disabled={disabled}
-            required={rules ? rules.find(x => x.required == true) : rules}
-            disabled={isView}
+            disabled={disabled || isView}
+            required={rules ? rules.find(x => x.required === true) : rules}
           />
         );
-        break;
       case 'ARadioGroup':
         return (
           <Field
@@ -141,11 +135,10 @@ class FieldComponent extends Component {
             component={ARadioGroup}
             placeholder={placeholder}
             hasFeedback={hasFeedback}
-            required={rules ? rules.find(x => x.required == true) : rules}
+            required={rules ? rules.find(x => x.required === true) : rules}
             disabled={isView}
           />
         );
-        break;
       case 'ASelect':
         return (
           <Field
@@ -157,11 +150,10 @@ class FieldComponent extends Component {
             component={ASelect}
             placeholder={placeholder}
             hasFeedback={hasFeedback}
-            required={rules ? rules.find(x => x.required == true) : rules}
+            required={rules ? rules.find(x => x.required === true) : rules}
             disabled={isView}
           />
         );
-        break;
       case 'ACheckbox':
         return (
           <Field
@@ -173,11 +165,10 @@ class FieldComponent extends Component {
             component={ACheckbox}
             placeholder={placeholder}
             hasFeedback={hasFeedback}
-            required={rules ? rules.find(x => x.required == true) : rules}
+            required={rules ? rules.find(x => x.required === true) : rules}
             disabled={isView}
           />
         );
-        break;
       case 'ATextarea':
         return (
           <Field
@@ -190,11 +181,10 @@ class FieldComponent extends Component {
             component={ATextarea}
             placeholder={placeholder}
             hasFeedback={hasFeedback}
-            required={rules ? rules.find(x => x.required == true) : rules}
+            required={rules ? rules.find(x => x.required === true) : rules}
             disabled={isView}
           />
         );
-        break;
       case 'ARangePicker':
         return (
           <Field
@@ -206,11 +196,10 @@ class FieldComponent extends Component {
             component={ARangePicker}
             placeholder={placeholder}
             hasFeedback={hasFeedback}
-            required={rules ? rules.find(x => x.required == true) : rules}
+            required={rules ? rules.find(x => x.required === true) : rules}
             disabled={isView}
           />
         );
-        break;
       case 'ADatePicker':
         return (
           <Field
@@ -222,11 +211,10 @@ class FieldComponent extends Component {
             component={ADatePicker}
             placeholder={placeholder}
             hasFeedback={hasFeedback}
-            required={rules ? rules.find(x => x.required == true) : rules}
+            required={rules ? rules.find(x => x.required === true) : rules}
             disabled={isView}
           />
         );
-        break;
       case 'AInputMask':
         return (
           <Field
@@ -240,10 +228,9 @@ class FieldComponent extends Component {
             hasFeedback={hasFeedback}
             nameArray={nameArray}
             type={type}
-            required={rules ? rules.find(x => x.required == true) : rules}
+            required={rules ? rules.find(x => x.required === true) : rules}
           />
         );
-        break;
 
       default:
         return (
@@ -256,11 +243,10 @@ class FieldComponent extends Component {
             component={AInput}
             placeholder={placeholder}
             hasFeedback={hasFeedback}
-            required={rules ? rules.find(x => x.required == true) : rules}
+            required={rules ? rules.find(x => x.required === true) : rules}
             disabled={isView}
           />
         );
-        break;
     }
   }
 }

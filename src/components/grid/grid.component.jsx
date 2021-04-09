@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
 import { Row, Col, Typography, Table } from 'antd';
-import { Link } from 'react-router-dom';
 import connect from '~/components/connect/connect';
 import RemoveReferencia from '~/helpers/removeReferenciaArray';
 

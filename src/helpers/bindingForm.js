@@ -1,5 +1,3 @@
-import React from 'react';
-
 const BindingForm = state => {
   var result = [];
   [state].map(function(obj) {

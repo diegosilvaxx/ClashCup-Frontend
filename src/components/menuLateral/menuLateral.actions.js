@@ -22,6 +22,8 @@ const actions = data => {
         pathname: '/perfil',
       });
       break;
+    default:
+      break;
   }
 };
 export default actions;

@@ -1,4 +1,4 @@
-import { all, takeLatest, call, put } from 'redux-saga/effects';
+import { all, takeLatest, call } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import { POST_TORNEIO, UPDATE_TORNEIO, DELETE_TORNEIO } from './admin.actionTypes';
 import api from '~/services/api';

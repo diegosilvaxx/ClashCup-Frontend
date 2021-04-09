@@ -10,7 +10,7 @@ export function* getPagamento({ payload }) {
   debugger;
   const result = yield call(api.apiSistema.get, `Pagamento/${payload}`);
   const dto = result.data.data;
-  if (dto.statusCode == 200) {
+  if (dto.statusCode === 200) {
     return;
   }
   if (dto[0].id) {

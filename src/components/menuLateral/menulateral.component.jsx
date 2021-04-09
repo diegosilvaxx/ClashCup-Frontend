@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
 import autoBind from 'react-autobind';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import './menulateral.css';
 import actionsMenuLateral from './menuLateral.actions';
 
-const { SubMenu } = Menu;
 const { Sider } = Layout;
 
 class menulateral extends Component {

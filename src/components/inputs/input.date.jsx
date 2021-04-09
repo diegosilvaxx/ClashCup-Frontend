@@ -19,7 +19,7 @@ class Container extends Component {
 
   render() {
     const dateFormat = 'DD/MM/YYYY';
-    const { name, label, action } = this.props;
+    const { name, label } = this.props;
 
     return <DatePicker name={name} label={label} format={dateFormat} locale={locale} onChange={this.onChage} />;
   }

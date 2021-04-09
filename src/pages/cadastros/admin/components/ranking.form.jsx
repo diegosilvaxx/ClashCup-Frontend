@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import autoBind from 'react-autobind';
-import { Input, Row, Col, Radio, Button } from 'antd';
+import { Input, Row, Col, Button } from 'antd';
 import Field from '~/components/field/field.component';
 import { store } from '~/store';
 import * as adminActionCreators from '~/store/modules/cadastros/admin/admin.actions';
