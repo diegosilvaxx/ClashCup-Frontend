@@ -8,7 +8,7 @@ const apiMaster = {
     baseURL: 'https://api.clashcup.com.br/api/v1/',
     // baseURL: 'http://clashcup-001-site1.itempurl.com//api/v1/',
     timeout: 1000,
-    headers: { 'X-Custom-Header': 'foobar' },
+    headers: { 'Content-Type': 'application/json' },
   }),
 };
 
