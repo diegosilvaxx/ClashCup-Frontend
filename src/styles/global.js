@@ -142,6 +142,10 @@ a:hover{
   margin: 16px 0 16px 24px;
 }
 
+.displayGrid{
+  display:grid
+}
+
 .site-layout-background {
   background: #fff;
 }
