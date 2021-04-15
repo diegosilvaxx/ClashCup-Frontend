@@ -21,7 +21,6 @@ class Pagamento extends Component {
 
   render() {
     let result = store.getState().torneio;
-    console.log(result);
     return (
       <>
         <Form layout="vertical">

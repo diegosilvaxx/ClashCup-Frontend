@@ -28,7 +28,6 @@ class Perfil extends Component {
   }
 
   render() {
-    console.log(store.getState().perfil);
     return (
       <>
         <Form layout="vertical" onFinish={this.setPerfil} state={store.getState().perfil}>

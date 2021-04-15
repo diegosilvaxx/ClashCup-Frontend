@@ -6,8 +6,6 @@ import { setState } from './inscrevaSe.actions';
 import { store } from '~/store';
 
 export function* getPagamento({ payload }) {
-  console.log(payload);
-  debugger;
   const result = yield call(api.apiSistema.get, `Pagamento/${payload}`);
   const dto = result.data.data;
   if (dto.statusCode === 200) {
@@ -26,7 +24,6 @@ export function* getPagamento({ payload }) {
 }
 
 export function* getPassport({ payload }) {
-  debugger;
   const result = yield call(api.apiSistema.get, `Pagamento/Passport/3ce090c0-6a78-435e-9f0a-ae84248f40c3`);
   // const result = yield call(api.apiSistema.get, `Pagamento/Passport/${payload}`);
   const dto = result.data.data;
@@ -35,7 +32,6 @@ export function* getPassport({ payload }) {
   }
   if (dto) {
     let novoDto = dto.map(x => Object.assign(x, { key: Date.now() }));
-    debugger;
     yield put(
       setState({
         FilterPassport: novoDto,

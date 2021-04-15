@@ -16,7 +16,6 @@ const reduce = (state = INITIAL_STATE, action = {}) => {
   let payload = action.payload || {};
   switch (action.type) {
     case SET_STATE_ADMIN:
-      debugger;
       return state.merge(payload);
     case CLEAN_FIELDS:
       return INITIAL_STATE;

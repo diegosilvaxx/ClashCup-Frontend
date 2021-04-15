@@ -33,8 +33,6 @@ export function* setPerfil({ payload }) {
     toast.error('Confirmação de senha, divergente a nova senha!');
     return;
   }
-  console.log(payload);
-  debugger;
   const data = {
     Nome: payload.Nome,
     Email: payload.Email,

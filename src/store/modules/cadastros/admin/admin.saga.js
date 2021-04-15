@@ -6,7 +6,6 @@ import { store } from '~/store';
 
 export function* setTorneio() {
   const payload = store.getState().admin;
-  debugger;
   var result = yield call(api.apiSistema.post, `Torneio`, payload);
 
   if (result.data.success) {
@@ -16,7 +15,6 @@ export function* setTorneio() {
 
 export function* updateTorneio() {
   const payload = store.getState().admin;
-  debugger;
   var result = yield call(api.apiSistema.put, `Torneio/`, payload);
 
   if (result) {

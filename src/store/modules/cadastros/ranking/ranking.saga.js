@@ -45,7 +45,6 @@ export function* updateRanking(data) {
 export function* filterRanking(noMessage) {
   const result = yield call(api.apiSistema.get, `Ranking`);
 
-  debugger;
   if (result.data) {
     yield put(
       setState({

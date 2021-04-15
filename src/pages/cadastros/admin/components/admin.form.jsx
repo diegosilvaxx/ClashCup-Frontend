@@ -20,7 +20,6 @@ class Admin extends Component {
   }
 
   async onChangeForm(data, allData) {
-    debugger;
     await store.dispatch(adminActionCreators.setState(allData));
   }
 

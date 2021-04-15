@@ -9,7 +9,6 @@ const apiMaster = {
 
 apiMaster.apiClash.interceptors.request.use(
   function(config) {
-    debugger;
     if (ClashRoyale.token) {
       config.headers.Authorization = `Bearer ${ClashRoyale.token}`;
     }
