@@ -1,6 +1,6 @@
 import RankingGrid from '../../pages/cadastros/ranking/container/ranking.grid';
 
-const cadastroCliente = [
+const ranking = [
   {
     path: '/ranking',
     component: RankingGrid,
@@ -10,4 +10,4 @@ const cadastroCliente = [
   },
 ];
 
-export default cadastroCliente;
+export default ranking;

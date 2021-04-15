@@ -46,8 +46,14 @@ export function* filterRanking(noMessage) {
   const result = yield call(api.apiSistema.get, `Ranking`);
 
   debugger;
-  if (result) {
-    yield put(setState({ FilterRanking: result.data.data }));
+  if (result.data) {
+    yield put(
+      setState({
+        FilterRanking: result.data.data.map(x => {
+          return { ...x, key: x.idClash };
+        }),
+      })
+    );
     if (noMessage === true) return;
     toast.success('Ranking carregado com sucesso!');
   }

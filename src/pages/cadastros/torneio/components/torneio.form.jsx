@@ -29,7 +29,7 @@ class Pagamento extends Component {
             <Col sm={18}>
               <Row>
                 {result.torneio &&
-                  [{}, {}].map(x => (
+                  result.torneio.map(x => (
                     <Col sm={8} key={x.id}>
                       <Row>
                         <Col>
