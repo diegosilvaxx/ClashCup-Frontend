@@ -6,9 +6,9 @@ import * as authActionCreators from '~/store/modules/auth/auth.actions';
 const apiMaster = {
   apiSistema: axios.create({
     //producao
-    //baseURL: 'https://api.clashcup.com.br/api/v1/',
+    baseURL: 'https://api.clashcup.com.br/api/v1/',
     //developer
-    baseURL: 'https://localhost:44324/api/v1/',
+    // baseURL: 'https://localhost:44324/api/v1/',
   }),
 };
 
