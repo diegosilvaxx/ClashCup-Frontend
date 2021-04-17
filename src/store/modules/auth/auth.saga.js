@@ -43,6 +43,8 @@ export function* signRegister({ payload }) {
   if (result) {
     toast.success('Cadastrado com sucesso!');
     history.push('/');
+  } else {
+    yield put(signFailure());
   }
 }
 

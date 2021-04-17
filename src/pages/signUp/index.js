@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import logo from '~/assets/logo.jpg';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import Button from 'react-bootstrap/Button';
-import { signRegister } from '~/store/modules/auth/auth.actions';
+import { signRegister, signInRequestReducer } from '~/store/modules/auth/auth.actions';
 import { store } from '~/store';
 import { Row, Col } from 'antd';
 
@@ -17,67 +18,69 @@ const schema = Yup.object().shape({
   email: Yup.string().required('Email é obrigatório'),
 });
 
-class SignUp extends Component {
-  handleSubmit(data) {
+export default function SignUp() {
+  function handleSubmit(data) {
     store.dispatch(signRegister(data));
   }
-  render() {
-    return (
-      <>
+
+  async function handleLoading() {
+    await store.dispatch(signInRequestReducer());
+  }
+
+  const loading = useSelector(state => state.auth.loading);
+  return (
+    <>
+      <Row>
+        <Col className="col-sm-12" style={{ display: 'flex', justifyContent: 'center' }}>
+          <img src={logo} style={{ width: 380, height: 150 }} alt="PortalVendas" />
+        </Col>
+      </Row>
+
+      <Form schema={schema} onSubmit={handleSubmit}>
         <Row>
-          <Col className="col-sm-12" style={{ display: 'flex', justifyContent: 'center' }}>
-            <img src={logo} style={{ width: 380, height: 150 }} alt="PortalVendas" />
+          <Col className="col-sm-12">
+            <Input className="w-100" name="nome" placeholder="Nome" />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="col-sm-12">
+            <Input className="w-100" name="email" placeholder="Email" />
           </Col>
         </Row>
 
-        <Form schema={schema} onSubmit={this.handleSubmit}>
-          <Row>
-            <Col className="col-sm-12">
-              <Input className="w-100" name="nome" placeholder="Nome" />
-            </Col>
-          </Row>
-          <Row>
-            <Col className="col-sm-12">
-              <Input className="w-100" name="email" placeholder="Email" />
-            </Col>
-          </Row>
+        <Row className="pb-2">
+          <Col className="col-sm-6 displayGrid">
+            <Input name="celular" placeholder="Celular" />
+          </Col>
+          <Col className="col-sm-6 displayGrid">
+            <Input name="idClash" placeholder="IdClash" />
+          </Col>
+        </Row>
 
-          <Row className="pb-2">
-            <Col className="col-sm-6 displayGrid">
-              <Input name="celular" placeholder="Celular" />
-            </Col>
-            <Col className="col-sm-6 displayGrid">
-              <Input name="idClash" placeholder="IdClash" />
-            </Col>
-          </Row>
+        <Row className="pb-2">
+          <Col className="col-sm-6 displayGrid">
+            <Input name="password" type="password" placeholder="Senha" />
+          </Col>
+          <Col className="col-sm-6 displayGrid">
+            <Input name="confirmPassword" type="password" placeholder="Confirma Password" />
+          </Col>
+        </Row>
 
-          <Row className="pb-2">
-            <Col className="col-sm-6 displayGrid">
-              <Input name="password" type="password" placeholder="Senha" />
-            </Col>
-            <Col className="col-sm-6 displayGrid">
-              <Input name="confirmPassword" type="password" placeholder="Confirma Password" />
-            </Col>
-          </Row>
-
-          <Row className="pb-2">
-            <Col className="col-sm-12">
-              <Button className="btn-success w-100" type="submit">
-                Criar conta
-              </Button>
-            </Col>
-          </Row>
-          <Row className="pb-2">
-            <Col className="col-sm-12">
-              <Link className="btn btn-primary w-100" to="/">
-                Já tenho login
-              </Link>
-            </Col>
-          </Row>
-        </Form>
-      </>
-    );
-  }
+        <Row className="pb-2">
+          <Col className="col-sm-12">
+            <Button className="btn-success w-100" onClick={handleLoading} type="submit">
+              {loading ? 'Carregando...' : 'Criar conta'}
+            </Button>
+          </Col>
+        </Row>
+        <Row className="pb-2">
+          <Col className="col-sm-12">
+            <Link className="btn btn-primary w-100" to="/">
+              Já tenho login
+            </Link>
+          </Col>
+        </Row>
+      </Form>
+    </>
+  );
 }
-
-export default SignUp;
