@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_FAILURE, SIGN_OUT } from './auth.actionTypes';
+import { SIGN_IN_REQUEST_REDUCER, SIGN_IN_SUCCESS, SIGN_FAILURE, SIGN_OUT } from './auth.actionTypes';
 
 const INITIAL_STATE = {
   token: null,
@@ -15,7 +15,7 @@ const INITIAL_STATE = {
 export default function auth(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      case SIGN_IN_REQUEST:
+      case SIGN_IN_REQUEST_REDUCER:
         draft.loading = true;
         break;
       case SIGN_IN_SUCCESS:

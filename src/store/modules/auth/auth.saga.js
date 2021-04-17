@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import history from 'services/history';
 import api from '~/services/api';
 import { signInSuccess, signFailure, signOut } from './auth.actions';
-import { SIGN_IN_REQUEST, SIGN_REGISTER, SIGN_OUT_SAGA } from './auth.actionTypes';
+import { SIGN_IN_REQUEST_SAGA, SIGN_REGISTER, SIGN_OUT_SAGA } from './auth.actionTypes';
 
 export function* signIn({ payload }) {
   const { usuario, password } = payload;
@@ -52,7 +52,7 @@ export function* signOutSaga() {
 }
 
 export default all([
-  takeLatest(SIGN_IN_REQUEST, signIn),
+  takeLatest(SIGN_IN_REQUEST_SAGA, signIn),
   takeLatest(SIGN_OUT_SAGA, signOutSaga),
   takeLatest(SIGN_REGISTER, signRegister),
 ]);

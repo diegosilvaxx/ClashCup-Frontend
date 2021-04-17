@@ -1,5 +1,6 @@
 import {
-  SIGN_IN_REQUEST,
+  SIGN_IN_REQUEST_REDUCER,
+  SIGN_IN_REQUEST_SAGA,
   SIGN_IN_SUCCESS,
   SIGN_FAILURE,
   SIGN_OUT,
@@ -7,9 +8,15 @@ import {
   SIGN_OUT_SAGA,
 } from './auth.actionTypes';
 
-export function signInRequest(usuario, password) {
+export function signInRequestReducer() {
   return {
-    type: SIGN_IN_REQUEST,
+    type: SIGN_IN_REQUEST_REDUCER,
+  };
+}
+
+export function signInRequestSaga(usuario, password) {
+  return {
+    type: SIGN_IN_REQUEST_SAGA,
     payload: { usuario, password },
   };
 }
