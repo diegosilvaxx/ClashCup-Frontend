@@ -6,6 +6,16 @@ const INITIAL_STATE = Immutable({
   Email: undefined,
   Celular: undefined,
   IdClash: undefined,
+  NomeClash: undefined,
+  Trofeu: undefined,
+  Vitoria: undefined,
+  CartaFavorita: undefined,
+  VitoriaTres: undefined,
+  Derrota: undefined,
+  MaxTrofeu: undefined,
+  Doacao: undefined,
+  MelhorPosicao: undefined,
+  NumeroParticipações: undefined,
 });
 
 const reduce = (state = INITIAL_STATE, action = {}) => {

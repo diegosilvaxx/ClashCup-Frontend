@@ -7,6 +7,7 @@ import { store } from '~/store';
 
 export function* getPerfil({ payload }) {
   const user = store.getState().auth;
+  console.log(user);
   const result = yield call(api.apiSistema.get, `Jogador/${user.JogadorId}`);
   const dto = result.data.data;
   if (dto.success || dto.id) {
@@ -16,6 +17,24 @@ export function* getPerfil({ payload }) {
         Email: dto.email,
         Celular: dto.celular,
         IdClash: dto.idClash,
+      })
+    );
+  }
+  const resultPerfil = yield call(api.apiSistema.get, `Ranking/Perfil/${user.IdClash.replace('#', '')}`);
+  const dtoPerfil = resultPerfil.data.data;
+  if (dtoPerfil.name) {
+    yield put(
+      setState({
+        NomeClash: dtoPerfil.name,
+        Trofeu: dtoPerfil.trophies,
+        Vitoria: dtoPerfil.wins,
+        CartaFavorita: dtoPerfil.currentFavouriteCard.name,
+        VitoriaTres: dtoPerfil.threeCrownWins,
+        Derrota: dtoPerfil.losses,
+        MaxTrofeu: dtoPerfil.bestTrophies,
+        Doacao: dtoPerfil.totalDonations,
+        MelhorPosicao: 0,
+        NumeroParticipações: 0,
       })
     );
     toast.success('Perfil carregado com sucesso!');

@@ -12,17 +12,17 @@ class Grid extends Component {
   }
 
   render() {
-    let { columns, data, title, style, emptyText } = this.props;
+    let { columns, data, title, styleGrid, emptyText } = this.props;
     let result = RemoveReferencia(data);
     return (
       <>
         <Row justify={'space-between'}>
-          <Col className={style || 'mt-4 ml-4 mr-4'}>
+          <Col className={styleGrid || 'mt-4 ml-4 mr-4'}>
             <Title level={3}>{title}</Title>
           </Col>
         </Row>
         <Row>
-          <Col md={24} className={style || 'px-4'}>
+          <Col md={24} className={styleGrid || 'px-4'}>
             <Table bordered={true} columns={columns} dataSource={result[0]} locale={{ emptyText: emptyText }} />
           </Col>
         </Row>

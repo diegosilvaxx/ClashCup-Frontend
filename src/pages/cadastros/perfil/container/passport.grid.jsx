@@ -64,6 +64,7 @@ class Container extends Component {
       <Row>
         <Col sm={24}>
           <Grid
+            styleGrid="ml-0"
             columns={columns}
             title="Passaportes"
             data={result}

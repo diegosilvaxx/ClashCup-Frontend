@@ -10,6 +10,7 @@ const INITIAL_STATE = {
   codigo: undefined,
   JogadorId: undefined,
   IdClash: undefined,
+  IsAdmin: undefined,
 };
 
 export default function auth(state = INITIAL_STATE, action) {
@@ -26,6 +27,7 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.codigo = action.payload.codigo;
         draft.JogadorId = action.payload.JogadorId;
         draft.IdClash = action.payload.IdClash;
+        draft.IsAdmin = action.payload.IsAdmin;
         break;
       case SIGN_FAILURE:
         draft.failLogin = true;

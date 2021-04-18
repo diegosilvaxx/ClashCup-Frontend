@@ -22,6 +22,11 @@ const actions = data => {
         pathname: '/perfil',
       });
       break;
+    case 'admin':
+      history.push({
+        pathname: '/admin',
+      });
+      break;
     default:
       break;
   }
