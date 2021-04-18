@@ -21,7 +21,7 @@ export function* signIn({ payload }) {
       email: result.data.data.user.email,
       JogadorId: result.data.data.user.jogadorId,
       IdClash: result.data.data.user.idClash,
-      IsAdmin: result.data.data.user.claims.find(x => x.value == 'admin'),
+      IsAdmin: result.data.data.user.claims.find(x => x.value === 'admin'),
     };
 
     yield put(signInSuccess(payloadLogin));
