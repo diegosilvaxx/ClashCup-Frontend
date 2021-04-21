@@ -3,7 +3,13 @@ import { toast } from 'react-toastify';
 import history from 'services/history';
 import api from '~/services/api';
 import { signInSuccess, signFailure, signOut } from './auth.actions';
-import { SIGN_IN_REQUEST_SAGA, SIGN_REGISTER, SIGN_OUT_SAGA } from './auth.actionTypes';
+import {
+  SIGN_IN_REQUEST_SAGA,
+  SIGN_REGISTER,
+  SIGN_OUT_SAGA,
+  RESET_PASSWORD,
+  UPDATE_PASSWORD,
+} from './auth.actionTypes';
 
 export function* signIn({ payload }) {
   const { usuario, password } = payload;
@@ -14,7 +20,6 @@ export function* signIn({ payload }) {
       Password: password,
     });
 
-    debugger;
     const payloadLogin = {
       token: result.data.data.accessToken,
       codigo: result.data.data.user.id,
@@ -55,8 +60,28 @@ export function* signOutSaga() {
   history.push('/');
 }
 
+export function* resetPassword({ payload }) {
+  try {
+    const result = yield call(api.apiSistema.post, `Auth/redefinirSenha`, {
+      Email: payload,
+    });
+
+    if (result) toast.success('Dados enviado para o seu email.');
+  } catch (error) {}
+}
+
+export function* updatePassword({ payload }) {
+  try {
+    const result = yield call(api.apiSistema.post, `Auth/updateSenha`, payload);
+
+    if (result.data) toast.success('Senha alterada com sucesso.');
+  } catch (error) {}
+}
+
 export default all([
   takeLatest(SIGN_IN_REQUEST_SAGA, signIn),
   takeLatest(SIGN_OUT_SAGA, signOutSaga),
   takeLatest(SIGN_REGISTER, signRegister),
+  takeLatest(RESET_PASSWORD, resetPassword),
+  takeLatest(UPDATE_PASSWORD, updatePassword),
 ]);

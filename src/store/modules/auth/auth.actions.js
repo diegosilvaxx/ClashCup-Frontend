@@ -6,6 +6,8 @@ import {
   SIGN_OUT,
   SIGN_REGISTER,
   SIGN_OUT_SAGA,
+  RESET_PASSWORD,
+  UPDATE_PASSWORD,
 } from './auth.actionTypes';
 
 export function signInRequestReducer() {
@@ -49,6 +51,20 @@ export function signOutSaga() {
 export function signRegister(payload) {
   return {
     type: SIGN_REGISTER,
+    payload: payload,
+  };
+}
+
+export function resetPassword(payload) {
+  return {
+    type: RESET_PASSWORD,
+    payload: payload,
+  };
+}
+
+export function updatePassword(payload) {
+  return {
+    type: UPDATE_PASSWORD,
     payload: payload,
   };
 }

@@ -28,12 +28,19 @@ export default function SignIn() {
     history.push('/signUp');
   }
 
+  function esqueceuSenha() {
+    history.push('/esqueceuSenha');
+  }
+
   return (
     <>
       <img src={logo} style={{ width: 350 }} alt="PortalVendas" />
       <Form schema={schema} onSubmit={handleSubmit}>
         <Input name="usuario" type="text" placeholder="Usuário" />
         <Input name="password" type="password" placeholder="Password" />
+        <p style={{ cursor: 'pointer' }} className="resetPassword" onClick={esqueceuSenha}>
+          Esqueceu a senha?
+        </p>
         <Button onClick={handleLoading} type="submit">
           {loading ? 'Carregando...' : 'Acessar'}
         </Button>

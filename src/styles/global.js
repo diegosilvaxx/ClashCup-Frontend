@@ -13,6 +13,7 @@ export default createGlobalStyle`
 
 a:hover{
   text-decoration: none;
+  cursor: pointer;
 }
 
 *:focus{
@@ -49,6 +50,7 @@ body, input, button {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 ul {
@@ -93,7 +95,7 @@ a:hover{
 }
 
 .overflowInvisible{
-  .padding: 0px 24px 24px;
+  padding: 0px 24px 24px;
   margin-left: -12px;
   z-index: 1;
   overflow: auto;
@@ -148,5 +150,16 @@ a:hover{
 
 .site-layout-background {
   background: #fff;
+}
+
+.resetPassword{
+  display: flex;
+  margin-top: 0 !important;
+  margin-bottom: 10px;
+  color:black !important;
+}
+
+.resetPassword:hover{
+color: blue !important;
 }
 `;

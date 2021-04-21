@@ -7,7 +7,6 @@ import { store } from '~/store';
 
 export function* getPerfil({ payload }) {
   const user = store.getState().auth;
-  console.log(user);
   const result = yield call(api.apiSistema.get, `Jogador/${user.JogadorId}`);
   const dto = result.data.data;
   if (dto.success || dto.id) {

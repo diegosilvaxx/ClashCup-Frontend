@@ -6,6 +6,8 @@ import Admin from './routeSystem/admin.route';
 
 import SignIn from '../pages/signIn';
 import SignUp from '../pages/signUp';
+import ResetPassword from '../pages/resetPassword';
+import EsqueceuSenha from '../pages/esqueceuSenha';
 
 const dashboard = [
   {
@@ -21,6 +23,20 @@ const dashboard = [
     isPrivate: false,
     exact: true,
     breadcrumb: 'Clash Cup / Cadastro',
+  },
+  {
+    path: '/resetPassword',
+    component: ResetPassword,
+    isPrivate: false,
+    exact: true,
+    breadcrumb: 'Clash Cup / Resetar Password',
+  },
+  {
+    path: '/esqueceuSenha',
+    component: EsqueceuSenha,
+    isPrivate: false,
+    exact: true,
+    breadcrumb: 'Clash Cup / Esqueceu senha',
   },
 ];
 
