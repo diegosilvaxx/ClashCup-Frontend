@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from '~/assets/logo.png';
-import { Form, Input } from '@rocketseat/unform';
+import { Input, Form } from '@rocketseat/unform';
+// import { Form } from '@unform/web';
+
 import * as Yup from 'yup';
 import Button from 'react-bootstrap/Button';
 import { updatePassword } from '~/store/modules/auth/auth.actions';
@@ -14,9 +16,10 @@ const schema = Yup.object().shape({
 });
 
 export default function SignIn(props) {
-  async function handleSubmit({ confirmPassword, password, email }) {
+  async function handleSubmit({ confirmPassword, password, email }, { resetForm }) {
     const token = props.location.search.replace('?token=', '');
     store.dispatch(updatePassword({ confirmPassword, password, token, email }));
+    resetForm();
   }
 
   function home() {

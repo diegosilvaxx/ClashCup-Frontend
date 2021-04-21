@@ -11,10 +11,9 @@ const schema = Yup.object().shape({
 });
 
 export default function EsqueceuSenha() {
-  async function handleSubmit({ email }) {
+  async function handleSubmit({ email }, { resetForm }) {
     await store.dispatch(resetPassword(email));
-    var emailDom = document.getElementById('email');
-    if (emailDom) emailDom.value = '';
+    resetForm();
   }
 
   function home() {

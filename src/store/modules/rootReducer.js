@@ -7,6 +7,7 @@ import inscrevaSe from './cadastros/inscrevaSe/inscrevaSe.reducer';
 import torneio from './cadastros/torneio/torneio.reducer';
 import perfil from './cadastros/perfil/perfil.reducer';
 import breadcrumb from './breadcrumb/breadcrumb.reducer';
+import loading from './loading/loading.reducer';
 import admin from './cadastros/admin/admin.reducer';
 function formReducer(fields = [], action = undefined) {
   switch (action.type) {
@@ -27,4 +28,5 @@ export default combineReducers({
   torneio,
   perfil,
   admin,
+  loading,
 });

@@ -9,6 +9,7 @@ import Routes from './routes';
 import { Router } from 'react-router-dom';
 import history from './services/history';
 import GlobalStyle from './styles/global';
+import Loading from 'components/pageLoader/pageLoader';
 
 import { store, persistor } from './store';
 
@@ -19,6 +20,7 @@ function App() {
         <Router history={history}>
           <GlobalStyle />
           <ToastContainer autoClose={3000} />
+          <Loading />
           <Routes />
         </Router>
       </PersistGate>
