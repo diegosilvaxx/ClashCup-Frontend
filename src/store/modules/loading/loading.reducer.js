@@ -8,7 +8,6 @@ const INITIAL_STATE = {
 export default function setState(state = INITIAL_STATE, action) {
   switch (action.type) {
     case SET_STATE_LOADING:
-      let { payload } = action;
       return produce(state, draft => {
         console.log(!draft.loading, state);
         draft.loading = !draft.loading;
