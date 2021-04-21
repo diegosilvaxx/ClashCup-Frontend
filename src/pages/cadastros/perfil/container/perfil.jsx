@@ -8,7 +8,6 @@ import '../components/perfil.css';
 class perfil extends Component {
   render() {
     const result = store.getState().perfil;
-    console.log(result);
     return (
       <Col sm={7}>
         <h1 className="ml-5" style={{ marginTop: 40 }}>
