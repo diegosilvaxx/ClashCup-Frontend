@@ -23,15 +23,13 @@ export function* getPagamento({ payload }) {
   }
 }
 
-export function* getPassport({ payload }) {
-  const result = yield call(api.apiSistema.get, `Pagamento/Passport/3ce090c0-6a78-435e-9f0a-ae84248f40c3`);
-  // const result = yield call(api.apiSistema.get, `Pagamento/Passport/${payload}`);
-  const dto = result.data.data;
-  if (!dto.success && !dto.length) {
-    return;
-  }
-  if (dto) {
-    let novoDto = dto.map(x => Object.assign(x, { key: Date.now() }));
+export function* getPassport() {
+  const user = store.getState().auth;
+  const result = yield call(api.apiSistema.get, `Pagamento/Passport/${user.JogadorId}`);
+
+  if (result) {
+    debugger;
+    let novoDto = result.data.data.map(x => Object.assign(x, { key: x.nome + x.data }));
     yield put(
       setState({
         FilterPassport: novoDto,

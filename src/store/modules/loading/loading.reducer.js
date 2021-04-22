@@ -9,7 +9,6 @@ export default function setState(state = INITIAL_STATE, action) {
   switch (action.type) {
     case SET_STATE_LOADING:
       return produce(state, draft => {
-        console.log(!draft.loading, state);
         draft.loading = !draft.loading;
       });
     default:

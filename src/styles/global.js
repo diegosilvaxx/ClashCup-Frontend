@@ -164,20 +164,14 @@ color: blue !important;
 }
 
 .loading-container{
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
   background-color: #f8f8f8AD;
-  z-index: 99999999;
-}
-
-.loading{
-  left:42%;
-  top:30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   z-index: 9999998;
-  position:absolute;
+  position: fixed;
+  width: 100%;
 }
 
 `;

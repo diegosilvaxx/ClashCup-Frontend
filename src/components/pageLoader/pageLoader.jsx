@@ -11,7 +11,7 @@ class PageLoader extends Component {
 
     return (
       <div className="loading-container">
-        <div className="loading">
+        <div>
           <img alt={'Loading...'} style={{ border: '6px solid #000', borderRadius: 15 }} src={loaderImg}></img>
         </div>
       </div>

@@ -7,10 +7,9 @@ export function getPagamento(action) {
   };
 }
 
-export function getPassport(action) {
+export function getPassport() {
   return {
     type: GET_PASSPORT,
-    payload: action,
   };
 }
 
