@@ -24,7 +24,7 @@ export default function EsqueceuSenha() {
     <>
       <Form schema={schema} onSubmit={handleSubmit}>
         <h4>Os dados para redefinir a senha serão enviados para o seu email</h4>
-        <p>Verificar a caixa de span</p>
+        <p>Verificar a caixa de spam</p>
         <Input name="email" type="email" placeholder="Email" />
         <Button type="submit">Enviar</Button>
         <Button onClick={home} className="btn btn-success mt-2">
