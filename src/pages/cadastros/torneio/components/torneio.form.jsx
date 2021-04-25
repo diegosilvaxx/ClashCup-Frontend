@@ -29,7 +29,7 @@ class Pagamento extends Component {
               <Row>
                 {result.torneio &&
                   result.torneio.map(x =>
-                    x.numeroJogadores == 1000 ? null : (
+                    x.numeroJogadores === 1000 ? null : (
                       <Col sm={8} key={x.id}>
                         <Row>
                           <Col>
