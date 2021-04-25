@@ -6,10 +6,12 @@ import paypal from '~/config/paypal';
 import { setPagamento, getPagamento } from '~/store/modules/cadastros/inscrevaSe/inscrevaSe.actions';
 import { store } from '~/store';
 import connect from '~/components/connect/connect';
+import { Link } from 'react-router-dom';
 
 function Paypal(props) {
   const [paid, setPaid] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   let paypalRef = useRef();
 
@@ -20,11 +22,11 @@ function Paypal(props) {
     image: clashRoyale,
   };
 
-  const state = store.getState().inscrevaSe;
+  const state = store.getState().inscrevaSe.TorneioId;
 
   useEffect(() => {
-    async function fetchData() {
-      await store.dispatch(getPagamento(props.TorneioId));
+    function fetchData() {
+      store.dispatch(getPagamento(props.TorneioId));
       const script = document.createElement('script');
       const id = paypal.secret;
       script.src = `https://www.paypal.com/sdk/js?currency=BRL&client-id=${id}`;
@@ -34,18 +36,20 @@ function Paypal(props) {
       document.body.appendChild(script);
     }
     fetchData();
-  }, [state, props.TorneioId]);
+  }, [props.TorneioId]);
 
   //componentDidUpdate Conversion to Hooks
   useEffect(() => {
     var { Status, TorneioId } = store.getState().inscrevaSe;
+    console.log(store.getState().inscrevaSe);
     if (Status === 'Concluido' && props.TorneioId === TorneioId) {
       setPaid(true);
     }
-  }, [props.TorneioId]);
+  }, [state, props.TorneioId]);
 
   useEffect(() => {
-    if (loaded) {
+    debugger;
+    if (loaded && paid === false && isLoaded === false) {
       function loadButtonAndLogicAboutPayment() {
         setTimeout(() => {
           window.paypal
@@ -70,6 +74,7 @@ function Paypal(props) {
               },
             })
             .render(paypalRef);
+          setIsLoaded(true);
         });
       }
       loadButtonAndLogicAboutPayment();
@@ -79,10 +84,21 @@ function Paypal(props) {
   return (
     <div className="App">
       {paid ? (
-        <div>
-          <h1>Parabéns, você comprou o {product.description}!</h1>
-          <img alt={product.description} src={clashGold} style={{ width: 1000, height: 400, marginBottom: 25 }} />
-        </div>
+        <>
+          <div>
+            <h1>Parabéns, você comprou o {product.description}!</h1>
+            <img
+              alt={product.description}
+              src={clashGold}
+              style={{ width: '100%', height: 400, padding: 10, maxWidth: 800 }}
+            />
+          </div>
+          <div>
+            <Link className="btn btn-primary w-100" style={{ width: '100%', margin: 10, maxWidth: 770 }} to="/perfil">
+              Detalhes
+            </Link>
+          </div>
+        </>
       ) : (
         <>
           <h1>

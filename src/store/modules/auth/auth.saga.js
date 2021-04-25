@@ -74,7 +74,8 @@ export function* updatePassword({ payload }) {
   try {
     const result = yield call(api.apiSistema.post, `Auth/updateSenha`, payload);
 
-    if (result.data) toast.success('Senha alterada com sucesso.');
+    debugger;
+    if (result) toast.success('Senha alterada com sucesso.');
   } catch (error) {}
 }
 

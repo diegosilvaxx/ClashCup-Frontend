@@ -1,11 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import logo from '~/assets/logo.jpg';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 import Button from 'react-bootstrap/Button';
-import { signRegister, signInRequestReducer } from '~/store/modules/auth/auth.actions';
+import { signRegister } from '~/store/modules/auth/auth.actions';
 import { store } from '~/store';
 import { Row, Col } from 'antd';
 
@@ -23,11 +22,6 @@ export default function SignUp() {
     store.dispatch(signRegister(data));
   }
 
-  async function handleLoading() {
-    await store.dispatch(signInRequestReducer());
-  }
-
-  const loading = useSelector(state => state.auth.loading);
   return (
     <>
       <Row>
@@ -68,8 +62,8 @@ export default function SignUp() {
 
         <Row className="pb-2">
           <Col className="col-sm-12">
-            <Button className="btn-success w-100" onClick={handleLoading} type="submit">
-              {loading ? 'Carregando...' : 'Criar conta'}
+            <Button className="btn-success w-100" type="submit">
+              Criar conta'
             </Button>
           </Col>
         </Row>

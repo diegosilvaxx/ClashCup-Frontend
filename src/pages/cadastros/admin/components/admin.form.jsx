@@ -29,6 +29,8 @@ class Admin extends Component {
 
   render() {
     const { prefix } = this.props;
+    const result = store.getState().auth;
+    if (!result.IsAdmin) return;
     return (
       <>
         <Form onValuesChange={this.onChangeForm} layout="vertical" state={store.getState().cadastroCliente}>

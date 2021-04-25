@@ -46,7 +46,7 @@ const ModalComponent = props => {
           title="Ranking"
           data={result}
           className="m-0"
-          emptyText="Você ainda não possui nenhum passaporte!"
+          emptyText="Torneio ainda não realizado."
         />
       </Modal>
     </>
