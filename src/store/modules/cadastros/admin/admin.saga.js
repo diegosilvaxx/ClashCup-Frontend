@@ -13,12 +13,11 @@ export function* setTorneio() {
   }
 }
 
-export function* updateTorneio() {
-  const payload = store.getState().admin;
-  var result = yield call(api.apiSistema.put, `Torneio/`, payload);
+export function* updateTorneio({ payload }) {
+  var result = yield call(api.apiSistema.put, `Ranking/UpdateRanking/${payload.replace('#', '')}`);
 
   if (result) {
-    toast.success('Torneio atualizado com sucesso!');
+    toast.success('Ranking atualizado com sucesso!');
   }
 }
 

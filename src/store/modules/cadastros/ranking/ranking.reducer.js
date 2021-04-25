@@ -8,6 +8,7 @@ const INITIAL_STATE = Immutable({
   Arena: undefined,
   vitoria: undefined,
   FilterRanking: [],
+  membersList: [],
 });
 
 const reduce = (state = INITIAL_STATE, action = {}) => {

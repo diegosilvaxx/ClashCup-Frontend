@@ -28,7 +28,6 @@ export function* getPassport() {
   const result = yield call(api.apiSistema.get, `Pagamento/Passport/${user.JogadorId}`);
 
   if (result) {
-    debugger;
     let novoDto = result.data.data.map(x => Object.assign(x, { key: x.nome + x.data }));
     yield put(
       setState({

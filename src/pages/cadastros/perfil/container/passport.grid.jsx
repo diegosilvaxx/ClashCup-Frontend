@@ -52,11 +52,16 @@ class Container extends Component {
         key: 'valorTorneio',
       },
       {
+        title: 'Tag',
+        dataIndex: 'tag',
+        key: 'tag',
+      },
+      {
         title: 'Action',
         key: 'operation',
         fixed: 'right',
-        width: 100,
-        render: () => <Modal />,
+        width: 10,
+        render: x => <Modal TagTorneio={x.tag} />,
       },
     ];
 

@@ -41,14 +41,12 @@ function Paypal(props) {
   //componentDidUpdate Conversion to Hooks
   useEffect(() => {
     var { Status, TorneioId } = store.getState().inscrevaSe;
-    console.log(store.getState().inscrevaSe);
     if (Status === 'Concluido' && props.TorneioId === TorneioId) {
       setPaid(true);
     }
   }, [state, props.TorneioId]);
 
   useEffect(() => {
-    debugger;
     if (loaded && paid === false && isLoaded === false) {
       function loadButtonAndLogicAboutPayment() {
         setTimeout(() => {

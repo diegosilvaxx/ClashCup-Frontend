@@ -6,18 +6,21 @@ import { setState } from './ranking.actions';
 import { store } from '~/store';
 
 export function* getRanking({ payload }) {
-  const result = yield call(api.apiSistema.get, `Ranking/${payload}`);
-  const dto = result.data.data;
-
-  if (result) {
+  if (!payload) {
     yield put(
       setState({
-        Nome: dto.nome,
-        Sobrenome: dto.sobrenome,
-        CPF: dto.cpf,
-        CNPJ: dto.cnpj,
-        InscricaoEstadual: dto.inscricaoEstadual,
-        RG: dto.rg,
+        membersList: [],
+      })
+    );
+    return;
+  }
+  const result = yield call(api.apiSistema.get, `Ranking/RankingById/${payload.replace('#', '')}`);
+  const dto = result.data.data;
+
+  if (dto) {
+    yield put(
+      setState({
+        membersList: dto.membersList,
       })
     );
     toast.success('Ranking carregado com sucesso!');

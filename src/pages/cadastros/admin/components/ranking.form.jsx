@@ -11,10 +11,12 @@ class dadosPessoais extends Component {
   constructor(props) {
     super(props);
     autoBind(this);
+    this.tagRef = React.createRef();
   }
 
   async onFinish() {
-    await store.dispatch(adminActionCreators.updateRanking());
+    let tag = this.tagRef.current.props.value;
+    await store.dispatch(adminActionCreators.updateRanking(tag));
   }
 
   render() {
@@ -24,7 +26,7 @@ class dadosPessoais extends Component {
           <Row>
             <Col sm={24}>
               <Field type="AInput" name={'IdTorneio'} label="Id Torneio">
-                <Input />
+                <Input ref={this.tagRef} />
               </Field>
             </Col>
           </Row>
@@ -36,7 +38,7 @@ class dadosPessoais extends Component {
                 cancelText={Msg.message.NO}
                 onConfirm={() => this.onFinish()}
                 button={
-                  <Button type="primary" className={'submitCustom'} htmlType="submit" onClick={this.onFinish}>
+                  <Button type="primary" className={'submitCustom'} htmlType="submit">
                     Atualizar Ranking
                   </Button>
                 }
