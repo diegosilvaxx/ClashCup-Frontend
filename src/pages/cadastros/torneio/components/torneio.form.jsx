@@ -28,20 +28,23 @@ class Pagamento extends Component {
             <Col sm={18}>
               <Row>
                 {result.torneio &&
-                  result.torneio.map(x => (
-                    <Col sm={8} key={x.id}>
-                      <Row>
-                        <Col>
-                          <Card
-                            dataTorneio={new Date(x.dataTorneio).toLocaleDateString()}
-                            title={x.nomeTorneio}
-                            id={x.id}
-                            descricao={x.descricao}
-                          />
-                        </Col>
-                      </Row>
-                    </Col>
-                  ))}
+                  result.torneio.map(x =>
+                    x.numeroJogadores == 1000 ? null : (
+                      <Col sm={8} key={x.id}>
+                        <Row>
+                          <Col>
+                            <Card
+                              dataTorneio={new Date(x.dataTorneio).toLocaleDateString()}
+                              title={x.nomeTorneio}
+                              id={x.id}
+                              descricao={x.descricao}
+                              numeroJogadores={x.numeroJogadores}
+                            />
+                          </Col>
+                        </Row>
+                      </Col>
+                    )
+                  )}
               </Row>
             </Col>
 

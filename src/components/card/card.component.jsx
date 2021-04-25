@@ -10,7 +10,7 @@ class CardComponent extends Component {
   }
 
   render() {
-    const { title, dataTorneio, id, descricao } = this.props;
+    const { title, dataTorneio, id, descricao, numeroJogadores } = this.props;
     const state = { dataTorneio, title, id };
     return (
       <Card
@@ -35,7 +35,7 @@ class CardComponent extends Component {
             style={{ border: '1px solid #fff', borderRadius: 4, padding: 4, textAlign: 'center' }}
           >
             <p style={{ color: 'white' }}>Vagas</p>
-            <p style={{ color: 'white' }}>1000/1000</p>
+            <p style={{ color: 'white' }}>{numeroJogadores}/1000</p>
           </Col>
         </Row>
         <p style={{ color: 'white' }} className="mt-2">

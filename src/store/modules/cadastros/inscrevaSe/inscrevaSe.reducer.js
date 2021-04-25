@@ -8,6 +8,7 @@ const INITIAL_STATE = Immutable({
   FormaPagamento: undefined,
   IdClash: undefined,
   FilterPassport: [],
+  JogadoresParticipante: undefined,
 });
 
 const reduce = (state = INITIAL_STATE, action = {}) => {
