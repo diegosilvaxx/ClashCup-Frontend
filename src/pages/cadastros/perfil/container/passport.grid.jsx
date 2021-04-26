@@ -47,11 +47,6 @@ class Container extends Component {
         key: 'horarioInicio',
       },
       {
-        title: 'Valor Torneio',
-        dataIndex: 'valorTorneio',
-        key: 'valorTorneio',
-      },
-      {
         title: 'Tag',
         dataIndex: 'tag',
         key: 'tag',

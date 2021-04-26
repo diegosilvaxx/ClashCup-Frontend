@@ -14,7 +14,10 @@ class perfil extends Component {
           Perfil
         </h1>
 
-        <Row className={'ml-5'} style={{ border: '1px solid', display: 'flex', justifyContent: 'center' }}>
+        <Row
+          className={'ml-5'}
+          style={{ border: '1px solid', display: 'flex', justifyContent: 'center', borderRadius: 10 }}
+        >
           <Col sm={24}>
             <Row className="ml-2" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
               <Col sm={14}>

@@ -1,8 +1,7 @@
 import './paypal.css';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import clashRoyale from '~/assets/clashroyale.png';
 import clashGold from '~/assets/clashroyale-gold.jpg';
-import paypal from '~/config/paypal';
 import { setPagamento, getPagamento } from '~/store/modules/cadastros/inscrevaSe/inscrevaSe.actions';
 import { store } from '~/store';
 import connect from '~/components/connect/connect';
@@ -10,13 +9,7 @@ import { Link } from 'react-router-dom';
 
 function Paypal(props) {
   const [paid, setPaid] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  let paypalRef = useRef();
-
   const product = {
-    price: 10.0,
     name: 'PassportClashCup',
     description: `Passport ${props.nameTorneio} - ${props.dataTorneio}`,
     image: clashRoyale,
@@ -27,13 +20,6 @@ function Paypal(props) {
   useEffect(() => {
     function fetchData() {
       store.dispatch(getPagamento(props.TorneioId));
-      const script = document.createElement('script');
-      const id = paypal.secret;
-      script.src = `https://www.paypal.com/sdk/js?currency=BRL&client-id=${id}`;
-
-      script.addEventListener('load', () => setLoaded(true));
-
-      document.body.appendChild(script);
     }
     fetchData();
   }, [props.TorneioId]);
@@ -46,38 +32,10 @@ function Paypal(props) {
     }
   }, [state, props.TorneioId]);
 
-  useEffect(() => {
-    if (loaded && paid === false && isLoaded === false) {
-      function loadButtonAndLogicAboutPayment() {
-        setTimeout(() => {
-          window.paypal
-            .Buttons({
-              createOrder: (_, actions) => {
-                return actions.order.create({
-                  purchase_units: [
-                    {
-                      description: product.description,
-                      amount: {
-                        currency_code: 'BRL',
-                        value: product.price,
-                      },
-                    },
-                  ],
-                });
-              },
-              onApprove: async (_, actions) => {
-                await actions.order.capture();
-                await store.dispatch(setPagamento({ FormaPagamento: 'Paypal', TorneioId: props.TorneioId }));
-                setPaid(true);
-              },
-            })
-            .render(paypalRef);
-          setIsLoaded(true);
-        });
-      }
-      loadButtonAndLogicAboutPayment();
-    }
-  });
+  async function onsubmit() {
+    await store.dispatch(setPagamento({ FormaPagamento: 'Paypal', TorneioId: props.TorneioId }));
+    setPaid(true);
+  }
 
   return (
     <div className="App">
@@ -99,11 +57,13 @@ function Paypal(props) {
         </>
       ) : (
         <>
-          <h1>
-            {product.description} por R${product.price}
-          </h1>
-          <img alt={product.description} src={clashRoyale} style={{ width: 250, height: 150 }} />
-          <div ref={v => (paypalRef = v)} />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <h1>{product.description}</h1>
+            <img alt={product.description} src={clashRoyale} style={{ width: 250, height: 150 }} />
+            <button className="btn btn-primary" onClick={onsubmit} style={{ width: '17%', marginBottom: '30px' }}>
+              Participar
+            </button>
+          </div>
         </>
       )}
     </div>

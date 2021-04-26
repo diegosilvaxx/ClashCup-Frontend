@@ -14,11 +14,14 @@ class CardComponent extends Component {
     const state = { dataTorneio, title, id };
     return (
       <Card
-        style={{ width: 255, height: 310, margin: 20, backgroundColor: 'black', borderRadius: 4 }}
+        style={{ width: 255, height: 310, margin: 20, backgroundColor: 'black', borderRadius: 18 }}
         headStyle={{ color: 'white' }}
         title={title || 'Torneio'}
         extra={
-          <strong onClick={() => history.push('/inscrevaSe', state)} style={{ color: 'aqua', cursor: 'pointer' }}>
+          <strong
+            onClick={() => history.push('/inscrevaSe', state)}
+            style={{ color: 'aqua', cursor: 'pointer', border: 'solid 2px', borderRadius: 10, padding: 4 }}
+          >
             Inscreva-se
           </strong>
         }

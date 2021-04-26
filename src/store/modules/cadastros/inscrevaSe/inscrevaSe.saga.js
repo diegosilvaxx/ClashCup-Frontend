@@ -6,7 +6,8 @@ import { setState } from './inscrevaSe.actions';
 import { store } from '~/store';
 
 export function* getPagamento({ payload }) {
-  const result = yield call(api.apiSistema.get, `Pagamento/${payload}`);
+  const user = store.getState().auth;
+  const result = yield call(api.apiSistema.get, `Pagamento/${payload}/${user.JogadorId}`);
   const dto = result.data.data;
   if (dto.statusCode === 200) {
     return;

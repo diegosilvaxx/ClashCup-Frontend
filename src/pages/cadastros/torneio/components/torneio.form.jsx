@@ -49,7 +49,9 @@ class Pagamento extends Component {
             </Col>
 
             <Col sm={6}>
-              <h1 className="m-3">Torneios</h1>
+              <h1 className="m-3" style={{ textAlign: 'center' }}>
+                Torneios
+              </h1>
               <img
                 alt={'troféu'}
                 src={trofeu}

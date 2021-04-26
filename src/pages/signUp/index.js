@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import { signRegister } from '~/store/modules/auth/auth.actions';
 import { store } from '~/store';
 import { Row, Col } from 'antd';
+import Modal from '~/components/modal/modal.info.component';
 
 const schema = Yup.object().shape({
   password: Yup.string().required('A senha é obrigatória'),
@@ -43,11 +44,12 @@ export default function SignUp() {
         </Row>
 
         <Row className="pb-2">
-          <Col className="col-sm-6 displayGrid">
+          <Col className="col-sm-4 displayGrid">
             <Input name="celular" placeholder="Celular" />
           </Col>
-          <Col className="col-sm-6 displayGrid">
+          <Col className="col-sm-4 displayGrid d-flex">
             <Input name="idClash" placeholder="IdClash" />
+            <Modal />
           </Col>
         </Row>
 
@@ -63,7 +65,7 @@ export default function SignUp() {
         <Row className="pb-2">
           <Col className="col-sm-12">
             <Button className="btn-success w-100" type="submit">
-              Criar conta'
+              Criar conta
             </Button>
           </Col>
         </Row>
