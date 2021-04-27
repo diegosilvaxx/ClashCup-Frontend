@@ -48,8 +48,7 @@ class CardComponent extends Component {
             Grande Torneio Clash Cup
           </p>
           <p style={{ color: 'white' }}>
-            {descricao ||
-              'Se junte aos melhores jogadores de Clash Royale em busca da 1° colocação para ganhar o prêmio máximo.'}
+            {descricao || 'Se junte aos melhores jogadores de Clash Royale em busca da 1°'}
           </p>
         </Card>
         <button

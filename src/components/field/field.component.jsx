@@ -44,6 +44,7 @@ const makeField = Component => ({
             {...input}
             {...rest}
             children={children}
+            maxLength={60}
           />
         </FormItem>
       );
