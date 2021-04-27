@@ -37,6 +37,12 @@ export function* signIn({ payload }) {
 }
 
 export function* signRegister({ payload }) {
+  const resultPerfil = yield call(api.apiSistema.get, `Ranking/Perfil/${payload.idClash.replace('#', '')}`);
+  const dtoPerfil = resultPerfil.data.data;
+  if (!dtoPerfil.name) {
+    toast.error('IdClash Inválido!!');
+    return;
+  }
   var data = {
     Email: payload.email,
     Password: payload.password,

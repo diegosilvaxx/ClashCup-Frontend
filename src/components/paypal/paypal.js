@@ -50,7 +50,7 @@ function Paypal(props) {
             />
           </div>
           <div>
-            <Link className="btn btn-primary w-100" style={{ width: '100%', margin: 10, maxWidth: 770 }} to="/perfil">
+            <Link className="btn btn-primary w-100" style={{ width: '100%', margin: 10, maxWidth: 784 }} to="/perfil">
               Detalhes
             </Link>
           </div>
