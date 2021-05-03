@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { signInRequestSaga } from '~/store/modules/auth/auth.actions';
 import { store } from '~/store';
 import history from 'services/history';
+import Modal from '~/components/modal/modal.android.component';
 
 const schema = Yup.object().shape({
   usuario: Yup.string().required('O usuário é obrigatorio'),
@@ -27,6 +28,7 @@ export default function SignIn() {
 
   return (
     <>
+      <Modal />
       <img src={logo} style={{ width: 350 }} alt="PortalVendas" />
       <Form schema={schema} onSubmit={handleSubmit}>
         <Input name="usuario" type="text" placeholder="Usuário" />
