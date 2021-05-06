@@ -3,6 +3,7 @@ import { Modal } from 'antd';
 import connect from '~/components/connect/connect';
 import info from '~/assets/info.png';
 import idClash from '~/assets/Tag.png';
+import dica from '~/assets/dica.png';
 
 const ModalComponent = props => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -31,7 +32,11 @@ const ModalComponent = props => {
         onOk={handleOk}
         style={{ display: 'flex', justifyContent: 'center' }}
       >
-        <img src={idClash} alt="IdClash" style={{ borderRadius: 7 }} />
+        <div style={{ display: 'grid' }}>
+          <img src={idClash} alt="IdClash" style={{ borderRadius: 7 }} />
+          <b style={{ margin: 10 }}>Para quem não tem computador pode usar essa dica abaixo!</b>
+          <img src={dica} alt="IdClash" style={{ borderRadius: 7 }} />
+        </div>
       </Modal>
     </>
   );
