@@ -22,6 +22,12 @@ class menulateral extends Component {
     this.setState({ collapsed });
   };
 
+  componentDidMount() {
+    if (window.screen.width < 800 || window.screen.height < 480) {
+      this.setState({ collapsed: true });
+    }
+  }
+
   render() {
     const { collapsed } = this.state;
     const result = store.getState().auth;
