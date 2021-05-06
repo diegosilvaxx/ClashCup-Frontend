@@ -5,28 +5,34 @@ import api from '~/services/api';
 import { store } from '~/store';
 
 export function* setTorneio() {
-  const payload = store.getState().admin;
-  var result = yield call(api.apiSistema.post, `Torneio`, payload);
+  try {
+    const payload = store.getState().admin;
+    var result = yield call(api.apiSistema.post, `Torneio`, payload);
 
-  if (result.data.success) {
-    toast.success('Torneio cadastrado com sucesso!');
-  }
+    if (result.data.success) {
+      toast.success('Torneio cadastrado com sucesso!');
+    }
+  } catch (error) {}
 }
 
 export function* updateTorneio({ payload }) {
-  var result = yield call(api.apiSistema.put, `Ranking/UpdateRanking/${payload.replace('#', '')}`);
+  try {
+    var result = yield call(api.apiSistema.put, `Ranking/UpdateRanking/${payload.replace('#', '')}`);
 
-  if (result) {
-    toast.success('Ranking atualizado com sucesso!');
-  }
+    if (result) {
+      toast.success('Ranking atualizado com sucesso!');
+    }
+  } catch (error) {}
 }
 
 export function* deleteTorneio() {
-  var result = yield call(api.apiSistema.delete, `Torneio/`);
+  try {
+    var result = yield call(api.apiSistema.delete, `Torneio/`);
 
-  if (result) {
-    toast.success('Torneio excluido com sucesso!');
-  }
+    if (result) {
+      toast.success('Torneio excluido com sucesso!');
+    }
+  } catch (error) {}
 }
 
 export default all([

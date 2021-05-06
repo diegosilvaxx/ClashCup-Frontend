@@ -6,28 +6,33 @@ import { setState } from './torneio.actions';
 import { store } from '~/store';
 
 export function* getTorneio() {
-  const result = yield call(api.apiSistema.get, `Torneio`);
-  const dto = result.data.data;
-  if (result) {
-    yield put(setState(dto));
-    toast.success('Torneio carregado com sucesso!');
-  }
+  try {
+    let result = yield call(api.apiSistema.get, `Torneio`);
+
+    const dto = result.data.data;
+    if (result) {
+      yield put(setState(dto));
+      toast.success('Torneio carregado com sucesso!');
+    }
+  } catch (error) {}
 }
 
 export function* setTorneio({ payload }) {
-  const user = store.getState().auth;
-  const data = {
-    FormaPagamento: payload.FormaPagamento,
-    Status: 'Concluido',
-    Email: user.email,
-    IdTorneio: 1,
-    JogadorId: user.JogadorId,
-    IdClash: user.IdClash,
-  };
-  var result = yield call(api.apiSistema.post, `Pagamento`, data);
-  if (result) {
-    toast.success('Pagamento realizado com sucesso!');
-  }
+  try {
+    const user = store.getState().auth;
+    const data = {
+      FormaPagamento: payload.FormaPagamento,
+      Status: 'Concluido',
+      Email: user.email,
+      IdTorneio: 1,
+      JogadorId: user.JogadorId,
+      IdClash: user.IdClash,
+    };
+    var result = yield call(api.apiSistema.post, `Pagamento`, data);
+    if (result) {
+      toast.success('Pagamento realizado com sucesso!');
+    }
+  } catch (error) {}
 }
 
 export default all([takeLatest(GET_TORNEIO, getTorneio), takeLatest(SET_TORNEIO, setTorneio)]);

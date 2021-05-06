@@ -4,6 +4,7 @@ import GlobalStyle from '../styles/global';
 import { Layout } from 'antd';
 import MenuLateral from 'components/menuLateral/menulateral.component';
 import Breadcrumb from 'components/breadcrumb/breadcrumb.component';
+
 const { Content } = Layout;
 
 const layoutRoute = props => {
