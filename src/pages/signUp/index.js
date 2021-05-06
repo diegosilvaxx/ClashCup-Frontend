@@ -44,11 +44,11 @@ export default function SignUp() {
         </Row>
 
         <Row className="pb-2">
-          <Col className="col-sm-4 displayGrid">
+          <Col className="col-sm-6 displayGrid">
             <Input name="celular" placeholder="Celular" />
           </Col>
-          <Col className="col-sm-4 displayGrid d-flex">
-            <Input name="idClash" placeholder="IdClash" />
+          <Col className="col-sm-6 displayGrid d-flex">
+            <Input name="idClash" placeholder="IdClash" style={{ width: '100%' }} />
             <Modal />
           </Col>
         </Row>

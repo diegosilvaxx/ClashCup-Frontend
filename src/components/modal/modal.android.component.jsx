@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal } from 'antd';
 import connect from '~/components/connect/connect';
 import idClash from '~/assets/android.jpg';
+import dica from '~/assets/dica.png';
 
 const ModalComponent = props => {
   const [isModalVisible, setIsModalVisible] = useState(true);
@@ -48,6 +49,8 @@ const ModalComponent = props => {
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <img src={idClash} alt="IdClash" style={{ borderRadius: 7, width: 350 }} />
           </div>
+          <b style={{ margin: 10 }}>Para quem não tem computador pode usar essa dica abaixo!</b>
+          <img src={dica} alt="IdClash" style={{ borderRadius: 7 }} />
         </Modal>
       </>
     )
